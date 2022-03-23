@@ -9,15 +9,15 @@ R_Assignment_with reviwers suggestions.Rmd
 
 
 These are my reviewers suggestions:
-GC_comments.md 
-TM_review
+#GC_comments.md 
+#TM_review
 
 
 
 These were my R scrip before reviewrs suggestions:
-R_Assignment_MF.Rmd
-R_Assignment_MF.html
-Assignment_final.R
+#R_Assignment_MF.Rmd
+#R_Assignment_MF.html
+#Assignment_final.R
 
 
 #I called snp_position.txt --> snp.mf
