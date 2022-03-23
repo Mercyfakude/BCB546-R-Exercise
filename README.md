@@ -3,11 +3,17 @@
 
 You can view my assignment in R_Markdown.md or R_Markdown.html 
 
-This is my R script:
-R_Assignment_Script.R
+This is my final R markdown script:
+R_Assignment_with reviwers suggestions.Rmd
 
 
-This is my R scripT:
+
+These are my reviewers suggestions:
+GC_comments.md 
+
+
+
+These were my R scrip before reviewrs suggestions:
 R_Assignment_MF.Rmd
 R_Assignment_MF.html
 
