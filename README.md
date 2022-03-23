@@ -17,6 +17,7 @@ TM_review
 These were my R scrip before reviewrs suggestions:
 R_Assignment_MF.Rmd
 R_Assignment_MF.html
+Assignment_final.R
 
 
 #I called snp_position.txt --> snp.mf
