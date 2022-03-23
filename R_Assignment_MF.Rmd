@@ -19,8 +19,8 @@ library(ggplot2)
 #Read the data files (fang.mf and snp.mf) we are going to use.Because a header is present we will set the “header” argument to TRUE so that R knows the first line contains a header.
 
 ```{r}
-fang.mf <- read.delim("C:/Users/mfakude/OneDrive - Iowa State University/Documents/EEOB546_R_lesson/fang_et_al_genotypes.txt", header = TRUE)
-snp.mf <- read.delim ("C:/Users/mfakude/OneDrive - Iowa State University/Documents/EEOB546_R_lesson/snp_position.txt", header = TRUE)
+fang.mf <- read.delim("https://raw.githubusercontent.com/EEOB-BioData/BCB546-Spring2022/main/assignments/UNIX_Assignment/fang_et_al_genotypes.txt", header = TRUE)
+snp.mf <- read.delim ("https://raw.githubusercontent.com/EEOB-BioData/BCB546-Spring2022/main/assignments/UNIX_Assignment/snp_position.txt", header = TRUE)
 ```
 #Data inspection of fang_et_al_genotypes.txt (Now named fang.mf)
 ```{r}
@@ -149,7 +149,7 @@ snp.mf %>%
   geom_text(stat = 'count', aes(label = ..count..), vjust = -1) +
   scale_x_continuous(breaks = 1:10) +
   theme_replace() +
-  ggtitle("snp count vs Chromosome") +
+  ggtitle("SNP Count vs Chromosome") +
   ylab('Number of snp') +
   xlab('Chromosome') 
 ggsave("./Data_visualization/Number of snp_chromosome.png")
@@ -178,6 +178,7 @@ ggsave("./Data_visualization/SNP_distribution_across_chromosomes.png")
 #Remove the 2nd tha the 3rd column in fang.mf and pipe it pivot_long by Sample_ID, to produce a tibble of each SNP and its genotypic value 
 #Mutate the file to add a colum with homozygous and heterozygous SNPs 
 
+
 #Plot graph (SNPs) by Sample ID and save it
 ```{r}
 mutate_Sampleid <- 
@@ -185,14 +186,13 @@ mutate_Sampleid <-
   pivot_longer(!Sample_ID) %>% 
   mutate(Allele = ifelse(value %in% c('C/C', 'G/G', 'A/A', 'T/T'), 'Homozygote', ifelse(value == '?/?', 'MD', 'Heterozygote')))
 View(mutate_Sampleid)
-
 library(RColorBrewer)
 color_plots <- brewer.pal(3, "Set3")
 mutate_Sampleid %>% group_by(Sample_ID) %>%  count(Allele) %>% 
   ggplot(aes(fill = Allele, y = n, x = Sample_ID)) +
   geom_bar(position = "fill", stat = "identity") +
   scale_fill_manual(values = color_plots) +
-  ggtitle("Ratio of homozygotes, heterozygotes and missing data by genotype ") +
+  ggtitle("Ratio of homozygotes, heterozygotes and missing data by Sample ID ") +
   ylab('Ratio') +
   theme(axis.title.x=element_blank(),
         axis.text.x=element_blank(),
